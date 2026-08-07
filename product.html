@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product · izoora</title>
+<meta name="description" content="View our curated selection of amber goods.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="headerWrapper"></div>
+
+<main id="mainContent">
+  <!-- Sub-view 1: Products List -->
+  <section id="productsListView" style="display:none; padding-top:44px;" class="wrap">
+    <div class="section-head">
+      <div><h2>All products</h2><p id="productsCountText"></p></div>
+    </div>
+    <div class="filter-bar" id="productsFilterBar">
+      <input class="search-input" id="pSearchInput" placeholder="Search products…">
+      <div id="categoryChips" style="display:inline-flex; gap:8px; flex-wrap:wrap;"></div>
+    </div>
+    <div class="grid-products" id="productsGrid"></div>
+    <div class="empty-state" id="productsEmptyState" style="display:none;">
+      <div class="drop"></div>
+      <h3>No products match your search</h3>
+      <p>Try a different keyword or category.</p>
+    </div>
+  </section>
+
+  <!-- Sub-view 2: Product Detail -->
+  <section id="productDetailView" style="display:none; padding-top:40px;" class="wrap">
+    <div class="pdp-grid">
+      <div class="pdp-gallery">
+        <div class="pdp-visual" style="background:#fff;">
+          <img id="mainPdpImage" src="" alt="" style="width:100%; height:100%; object-fit:contain; border-radius:20px;">
+        </div>
+        <div class="pdp-thumbnails" style="display:flex; gap:10px; margin-top:15px;" id="pdpThumbnails"></div>
+      </div>
+      <div>
+        <div class="idtag" id="pdpId"></div>
+        <h1 style="margin-top:14px;" id="pdpName"></h1>
+        <div style="color:var(--amber-bright);margin-bottom:10px;" id="pdpRating"></div>
+        <div style="display:flex;align-items:baseline;gap:12px;margin:12px 0;">
+          <span style="font-size:28px;font-weight:700;font-family:'Fraunces',serif;" id="pdpPriceUSD"></span>
+          <span class="mono" style="color:var(--cream-dim);" id="pdpPricePKR"></span>
+        </div>
+        <div id="pdpStockFlag"></div>
+        <div class="qty-row">
+          <div class="qty-box">
+            <button onclick="changeQtyBox(-1)">−</button><span id="pdpQty">1</span><button onclick="changeQtyBox(1)">+</button>
+          </div>
+          <button class="btn btn-primary" id="btnAddToBag">Add to bag</button>
+          <button class="btn btn-primary" id="btnBuyNow">Buy Now</button>
+        </div>
+        <div class="tabs">
+          <button id="tab_desc">Description</button>
+          <button id="tab_ship">Shipping</button>
+          <button id="tab_revs">Reviews</button>
+        </div>
+        <div style="color:var(--cream-dim);font-size:14.5px;line-height:1.7; margin-top:15px;" id="pdpTabText"></div>
+
+        <!-- Product Inquiry Form (Formspree Integration) -->
+        <div class="panel" style="margin-top: 32px; background: var(--bg-card); border: 1px solid var(--line);">
+          <h3 style="margin-bottom: 12px;">Product Inquiry</h3>
+          <form id="productInquiryForm">
+            <div class="field"><label>Your Email</label><input name="email" type="email" required placeholder="jane@example.com"></div>
+            <div class="field"><label>Message or Question</label><textarea name="message" rows="3" required placeholder="Hello, I have a question about this product..."></textarea></div>
+            <button class="btn btn-primary btn-block" type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Review Section -->
+    <div class="divider"><span class="drop"></span><div class="line"></div></div>
+    <div class="panel" style="background: var(--bg-card); border: 1px solid var(--line);">
+      <h2>Customer Reviews</h2>
+      <div style="margin-top: 20px;" id="reviewsList"></div>
+
+      <div style="margin-top: 30px;">
+        <h3>Write a Review</h3>
+        <form id="reviewForm">
+          <div class="field"><label>Your Name</label><input id="rev_name" required placeholder="Jane Doe"></div>
+          <div class="field">
+            <label>Rating</label>
+            <select id="rev_rating" style="width: auto;">
+              <option value="5">★★★★★ (5 Stars)</option>
+              <option value="4">★★★★☆ (4 Stars)</option>
+              <option value="3">★★★☆☆ (3 Stars)</option>
+              <option value="2">★★☆☆☆ (2 Stars)</option>
+              <option value="1">★☆☆☆☆ (1 Star)</option>
+            </select>
+          </div>
+          <div class="field"><label>Comment</label><textarea id="rev_text" rows="3" required placeholder="Write your feedback here..."></textarea></div>
+          <button class="btn btn-primary" type="submit">Submit Review</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="relatedSection" style="display:none;">
+      <div class="divider"><span class="drop"></span><div class="line"></div></div>
+      <h2 style="margin-bottom:20px;">You may also like</h2>
+      <div class="grid-products" id="relatedProductsGrid"></div>
+    </div>
+  </section>
+</main>
+
+<template id="cartTemplate">
+  <div class="wrap" style="padding-top:44px;max-width:760px;">
+    <h1>Your bag</h1>
+    <div class="empty-state" id="cartEmptyState" style="display:none;">
+      <div class="drop"></div>
+      <h3>Your bag is empty</h3>
+      <p>Browse the collection to find something you love.</p>
+      <button class="btn btn-primary" style="margin-top:16px;" onclick="go('#/products')">Shop now</button>
+    </div>
+    <div id="cartContent" style="display:none;">
+      <div class="panel" style="margin-top:24px;">
+        <div id="cartItemsList"></div>
+        <div class="summary-row total"><span>Total</span><span><span id="cartTotalUSD"></span> <span class="mono" style="font-size:13px;color:var(--cream-dim);" id="cartTotalPKR"></span></span></div>
+      </div>
+      <button class="btn btn-primary btn-block" style="margin-top:10px;padding:15px;" onclick="goCheckout()">Proceed to checkout</button>
+    </div>
+  </div>
+</template>
+
+<div id="footerWrapper"></div>
+<div class="toast-stack" id="toastStack"></div>
+<script src="script.js"></script>
+</body>
+</html>

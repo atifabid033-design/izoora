@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About & Help · izoora</title>
+<meta name="description" content="Learn about the izoora story, read frequently asked questions, and see customer reviews.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="headerWrapper"></div>
+
+<main id="mainContent">
+  <div class="wrap" style="padding-top:44px;max-width:900px;">
+    <h1>About, contact &amp; help</h1>
+    <p style="color:var(--cream-dim);max-width:640px;">At izoora, we don’t just manufacture products — we craft experiences. Our journey began with high-quality terry towels, but our vision reaches far beyond. We are building a lifestyle brand that will extend into:</p>
+    <p style="font-size:15px;line-height:1.85;">🟣Textiles – Luxurious, sustainable fabrics for modern living</p>
+     <p style="font-size:15px;line-height:1.85;">🟣 Household Goods – Everyday essentials with timeless design</p>
+      <p style="font-size:15px;line-height:1.85;">🟣 Apparel & Fashion – Elevated wardrobe basics and statement pieces</p>
+
+      <p style="font-size:15px;line-height:1.85;margin-top:18px;">We cater to global retailers, importers, and private labels who value quality, reliability, and scalable sourcing solutions. With a strong foundation in textile expertise and a forward-thinking approach to brand building, Izoora is your trusted partner in growth.</p>
+    <div class="divider"><span class="drop"></span><div class="line"></div></div>
+    <h2>Contact us</h2>
+    <div class="two-col">
+      <div class="panel" style="background:var(--bg-card); border:1px solid var(--line);"><b>Email</b><p style="color:var(--cream-dim);margin:6px 0 0;">info@izoora.com</p></div>
+      <div class="panel" style="background:var(--bg-card); border:1px solid var(--line);"><b>Phone</b><p style="color:var(--cream-dim);margin:6px 0 0;">+1 (346) 610-7637</p></div>
+    </div>
+
+    <div class="divider"><span class="drop"></span><div class="line"></div></div>
+    <h2>Frequently asked questions</h2>
+    <div id="faqContainer"></div>
+
+    <!-- <div class="divider"><span class="drop"></span><div class="line"></div></div>
+    <h2>Customer reviews</h2>
+    <div class="grid-products" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr));" id="infoReviewsGrid"></div>
+  </div> -->
+</main>
+
+<template id="cartTemplate">
+  <div class="wrap" style="padding-top:44px;max-width:760px;">
+    <h1>Your bag</h1>
+    <div class="empty-state" id="cartEmptyState" style="display:none;">
+      <div class="drop"></div>
+      <h3>Your bag is empty</h3>
+      <p>Browse the collection to find something you love.</p>
+      <button class="btn btn-primary" style="margin-top:16px;" onclick="go('#/products')">Shop now</button>
+    </div>
+    <div id="cartContent" style="display:none;">
+      <div class="panel" style="margin-top:24px;">
+        <div id="cartItemsList"></div>
+        <div class="summary-row total"><span>Total</span><span><span id="cartTotalUSD"></span> <span class="mono" style="font-size:13px;color:var(--cream-dim);" id="cartTotalPKR"></span></span></div>
+      </div>
+      <button class="btn btn-primary btn-block" style="margin-top:10px;padding:15px;" onclick="goCheckout()">Proceed to checkout</button>
+    </div>
+  </div>
+</template>
+
+<div id="footerWrapper"></div>
+<div class="toast-stack" id="toastStack"></div>
+<script src="script.js"></script>
+</body>
+</html>

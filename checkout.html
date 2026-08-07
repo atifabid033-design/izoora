@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout · izoora</title>
+  <meta name="description" content="Secure checkout for your order at izoora.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="headerWrapper"></div>
+
+  <main id="mainContent">
+    <div class="wrap" style="padding-top:40px;max-width:920px;">
+      <h1>Checkout</h1>
+      <div class="notice info">We've filled this in with the details from your account — please double check everything is correct before you place the order, and edit anything that needs updating.</div>
+      <div class="two-col" style="align-items:flex-start;">
+        <div class="form-card" style="max-width:none;margin:0;">
+          <h3 style="margin-bottom:16px;">Delivery details</h3>
+          <div class="field"><label>Full name</label><input id="co_fullName" value=""></div>
+          <div class="field"><label>Phone number</label><input id="co_phone" value=""></div>
+          <div class="field"><label>Email</label><input id="co_email" value=""></div>
+          <div class="field"><label>Delivery address</label><textarea id="co_address" rows="2"></textarea></div>
+          <div class="field"><label>Nearest landmark</label><input id="co_landmark" value=""></div>
+          <div id="coErr" class="notice error" style="display:none;"></div>
+          <h3 style="margin:22px 0 10px;">Payment method</h3>
+          <div class="pay-methods" style="grid-template-columns: 1fr;">
+            <div class="pay-opt active" style="text-align: left; padding: 15px;">
+              <input type="radio" checked style="width: auto; margin-right: 10px;"> Cash on Delivery
+            </div>
+          </div>
+        </div>
+        <div class="panel" style="margin:0;">
+          <h3>Order summary</h3>
+          <div id="checkoutSummaryItems"></div>
+          <div class="summary-row"><span>Shipping</span><span id="checkoutShipping"></span></div>
+          <div class="summary-row total"><span>Total</span><span id="checkoutTotal"></span></div>
+          <div class="mono" style="text-align:right;color:var(--cream-dim);font-size:12.5px;" id="checkoutTotalPKR"></div>
+          <button class="btn btn-primary btn-block" style="margin-top:18px;padding:15px;" id="btnPlaceOrder">Place order</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <template id="cartTemplate">
+    <div class="wrap" style="padding-top:44px;max-width:760px;">
+      <h1>Your bag</h1>
+      <div class="empty-state" id="cartEmptyState" style="display:none;">
+        <div class="drop"></div>
+        <h3>Your bag is empty</h3>
+        <p>Browse the collection to find something you love.</p>
+        <button class="btn btn-primary" style="margin-top:16px;" onclick="go('#/products')">Shop now</button>
+      </div>
+      <div id="cartContent" style="display:none;">
+        <div class="panel" style="margin-top:24px;">
+          <div id="cartItemsList"></div>
+          <div class="summary-row total"><span>Total</span><span><span id="cartTotalUSD"></span> <span class="mono" style="font-size:13px;color:var(--cream-dim);" id="cartTotalPKR"></span></span></div>
+        </div>
+        <button class="btn btn-primary btn-block" style="margin-top:10px;padding:15px;" onclick="goCheckout()">Proceed to checkout</button>
+      </div>
+    </div>
+  </template>
+
+  <div id="footerWrapper"></div>
+  <div class="toast-stack" id="toastStack"></div>
+  <script src="script.js"></script>
+</body>
+</html>

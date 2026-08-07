@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home · izoora</title>
+  <meta name="description"
+    content="Welcome to izoora — Goods with the warmth of amber, made to last. Shop our honey-toned candles, jewelry, decor, and self-care.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="headerWrapper"></div>
+
+  <main id="mainContent">
+    <!-- Home page content -->
+    <section class="hero" id="heroSlider">
+      <!-- Animated background slides -->
+      <div class="hero-slide active" data-slide="0">
+        <img src="products pictures/home pic 1.jpg" alt="Home 1">
+        <div class="wrap hero-text-wrap">
+          <div class="hero-text-content">
+            <div class="eyebrow">BATHROBES</div>
+            <h1>LUXURY REDEFINED</h1>
+            <p class="lead">Wrap yourself in comfort with 100% Organic Cotton Bathrobes</p>
+            <p class="support">Experience unmatched softness and Absorbency</p>
+            <button class="btn btn-primary" onclick="go('#/products')">SHOP NOW</button>
+          </div>
+        </div>
+      </div>
+      <div class="hero-slide" data-slide="1">
+        <img src="products pictures/home pic 2.jpg" alt="Home 2">
+        <div class="wrap hero-text-wrap">
+          <div class="hero-text-content">
+            <div class="eyebrow">TOWELS</div>
+            <h1>PREMIUM TOWELS</h1>
+            <p class="lead">Pamper Your Self with premium Towels</p>
+            <p class="support">Responsibly Sourced, Designed For Pure Comfort.</p>
+            <button class="btn btn-primary" onclick="go('#/products')">SHOP NOW</button>
+          </div>
+        </div>
+      </div>
+      <div class="hero-slide" data-slide="2">
+        <img src="products pictures/home pic 3.jpg" alt="Home 3">
+        <div class="wrap hero-text-wrap">
+          <div class="hero-text-content">
+            <div class="eyebrow">HOME DECOR</div>
+            <h1>AMBER GLOW CANDLES</h1>
+            <p class="lead">Hand-poured soy candles in warm honey-amber hues</p>
+            <p class="support">Natural fragrances designed to elevate your daily rituals</p>
+            <button class="btn btn-primary" onclick="go('#/products')">SHOP NOW</button>
+          </div>
+        </div>
+      </div>
+      <!-- Navigation arrows -->
+      <button class="hero-arrow hero-arrow-left" aria-label="Previous Slide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button class="hero-arrow hero-arrow-right" aria-label="Next Slide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+      <div class="hero-dots" id="heroDots"></div>
+    </section>
+
+    <!-- 3. Three Statistics Categories -->
+    <section class="stats-section">
+      <div class="wrap">
+        <div class="stats-container">
+          <div class="stat-card">
+            <b><span id="statClientsCount"></span>+</b>
+            <span>Happy Customers</span>
+          </div>
+          <div class="stat-card">
+            <b><span id="statProductsCount"></span>+</b>
+            <span>Products Live</span>
+          </div>
+          <div class="stat-card">
+            <b>4.8★</b>
+            <span>Rating</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Six-Product Infinite Horizontal Carousel -->
+    <section class="carousel-section">
+      <div class="wrap">
+        <h2 style="margin-top: 2%; margin-bottom: 2%; text-align: center; font-family: 'Fraunces', serif;">Our Collection</h2>
+      </div>
+      <div class="carousel-container">
+        <div class="carousel-track" id="carouselTrack">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Bathrobe Feature Section -->
+    <section class="bathrobe-feature-section">
+      <div class="wrap bathrobe-feature-container">
+        <div class="bathrobe-feature-image">
+          <img src="products pictures/bath1.jpg" alt="IZOORA BATHROBE">
+        </div>
+        <div class="bathrobe-feature-content">
+          <div class="eyebrow" style="color: var(--amber-deep); font-weight: 600; letter-spacing: 0.1em; margin-bottom: 8px;">IZOORA BATHROBE</div>
+          <h2 style="font-family: 'Fraunces', serif; font-size: clamp(24px, 4vw, 32px); line-height: 1.2; margin-bottom: 12px; font-weight: 700;">PREMIUM 100% COTTON TERRY SHAWL BATH ROBE COLLAR</h2>
+          <p class="price-callout" style="font-family: 'Work Sans', sans-serif; font-size: 18px; color: var(--amber-deep); font-weight: 700; margin-bottom: 24px;">FOR JUST $32.99 ONLY!</p>
+          <button class="btn btn-primary" onclick="go('#/products?cat=bathrobes')">BUY NOW</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Towel Hero Banner Section -->
+    <section class="towel-hero-banner">
+      <img src="products pictures/tow1.webp" alt="Organic Cotton Towels" class="towel-hero-bg">
+      <div class="towel-hero-overlay"></div>
+      <div class="towel-hero-content">
+        <h2>PURE COMFORT, NATURALLY</h2>
+        <p>Hypoallergenic, skin-friendly, and made from the finest organic cotton.<br>Gentle on you, kind to the planet.</p>
+        <button class="towel-hero-btn" onclick="go('#/products')">VIEW COLLECTION</button>
+      </div>
+    </section>
+
+    <!-- Three Service Features Section -->
+    <section class="service-features-section">
+      <div class="wrap service-features-container">
+        <div class="service-feature-item">
+          <div class="service-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--amber-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px;">
+              <rect x="1" y="3" width="15" height="13"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+          </div>
+          <h3>FREE SHIPPING</h3>
+          <p>Get free shipping on orders of $100 or more</p>
+        </div>
+        <div class="service-feature-item">
+          <div class="service-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--amber-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px;">
+              <path d="M12 3 C 12 3, 15 8, 12 17 C 9 8, 12 3, 12 3 Z"></path>
+              <path d="M12 17 C 12 17, 4 14, 5 7 C 9 8, 12 17, 12 17 Z"></path>
+              <path d="M12 17 C 12 17, 20 14, 19 7 C 15 8, 12 17, 12 17 Z"></path>
+            </svg>
+          </div>
+          <h3>CUSTOMER SERVICE</h3>
+          <p>A question? Please contact us at +1(346) 610-7637</p>
+        </div>
+        <div class="service-feature-item">
+          <div class="service-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--amber-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px;">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <h3>SECURE PAYMENT</h3>
+          <p>Your payment information is processed securely</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <template id="cartTemplate">
+    <div class="wrap" style="padding-top:44px;max-width:760px;">
+      <h1>Your bag</h1>
+      <div class="empty-state" id="cartEmptyState" style="display:none;">
+        <div class="drop"></div>
+        <h3>Your bag is empty</h3>
+        <p>Browse the collection to find something you love.</p>
+        <button class="btn btn-primary" style="margin-top:16px;" onclick="go('#/products')">Shop now</button>
+      </div>
+      <div id="cartContent" style="display:none;">
+        <div class="panel" style="margin-top:24px;">
+          <div id="cartItemsList"></div>
+          <div class="summary-row total"><span>Total</span><span><span id="cartTotalUSD"></span> <span class="mono"
+                style="font-size:13px;color:var(--cream-dim);" id="cartTotalPKR"></span></span></div>
+        </div>
+        <button class="btn btn-primary btn-block" style="margin-top:10px;padding:15px;" onclick="goCheckout()">Proceed
+          to checkout</button>
+      </div>
+    </div>
+  </template>
+
+  <div id="footerWrapper"></div>
+  <div class="toast-stack" id="toastStack"></div>
+  <script>
+    // Hero slider — auto-swipe background with coordinated animation (from index.html2)
+    (function () {
+      const slides = Array.from(document.querySelectorAll('#heroSlider .hero-slide'));
+      const dotsWrap = document.getElementById('heroDots');
+      if (!slides.length) return;
+
+      let current = 0;
+      const SLIDE_DURATION = 4000;
+      let timer;
+
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        dot.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(dot);
+      });
+      const dots = Array.from(dotsWrap.children);
+
+      function goTo(index) {
+        if (index === current) return;
+        const prev = slides[current];
+        const next = slides[index];
+
+        prev.classList.add('leaving');
+        prev.classList.remove('active');
+        next.classList.remove('leaving');
+        next.classList.add('active');
+
+        dots[current].classList.remove('active');
+        dots[index].classList.add('active');
+        current = index;
+
+        setTimeout(() => prev.classList.remove('leaving'), 1200);
+        resetTimer();
+      }
+
+      function nextSlide() {
+        goTo((current + 1) % slides.length);
+      }
+
+      function resetTimer() {
+        clearInterval(timer);
+        timer = setInterval(nextSlide, SLIDE_DURATION);
+      }
+
+      // Add navigation arrows event listeners
+      const leftArrow = document.querySelector('#heroSlider .hero-arrow-left');
+      const rightArrow = document.querySelector('#heroSlider .hero-arrow-right');
+      if (leftArrow) {
+        leftArrow.addEventListener('click', (e) => {
+          e.stopPropagation();
+          goTo((current - 1 + slides.length) % slides.length);
+        });
+      }
+      if (rightArrow) {
+        rightArrow.addEventListener('click', (e) => {
+          e.stopPropagation();
+          goTo((current + 1) % slides.length);
+        });
+      }
+
+      resetTimer();
+    })();
+  </script>
+  <script src="script.js"></script>
+</body>
+
+</html>

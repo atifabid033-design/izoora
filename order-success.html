@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Success · izoora</title>
+  <meta name="description" content="Thank you for your order at izoora.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="headerWrapper"></div>
+
+  <main id="mainContent">
+    <div class="wrap" style="padding:70px 0;max-width:560px;text-align:center;">
+      <div class="drop" style="width:24px;height:32px;margin-bottom:18px;"></div>
+      <h1>Thank you — your order is confirmed</h1>
+      <p style="color:var(--cream-dim);">Order <span class="idtag" id="successOrderId"></span> has been placed and is now pending fulfillment. You'll be able to track its status from "My orders."</p>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;">
+        <button class="btn btn-ghost" onclick="go('#/orders')">View my orders</button>
+        <button class="btn btn-primary" onclick="go('#/products')">Continue shopping</button>
+      </div>
+    </div>
+  </main>
+
+  <template id="cartTemplate">
+    <div class="wrap" style="padding-top:44px;max-width:760px;">
+      <h1>Your bag</h1>
+      <div class="empty-state" id="cartEmptyState" style="display:none;">
+        <div class="drop"></div>
+        <h3>Your bag is empty</h3>
+        <p>Browse the collection to find something you love.</p>
+        <button class="btn btn-primary" style="margin-top:16px;" onclick="go('#/products')">Shop now</button>
+      </div>
+      <div id="cartContent" style="display:none;">
+        <div class="panel" style="margin-top:24px;">
+          <div id="cartItemsList"></div>
+          <div class="summary-row total"><span>Total</span><span><span id="cartTotalUSD"></span> <span class="mono" style="font-size:13px;color:var(--cream-dim);" id="cartTotalPKR"></span></span></div>
+        </div>
+        <button class="btn btn-primary btn-block" style="margin-top:10px;padding:15px;" onclick="goCheckout()">Proceed to checkout</button>
+      </div>
+    </div>
+  </template>
+
+  <div id="footerWrapper"></div>
+  <div class="toast-stack" id="toastStack"></div>
+  <script src="script.js"></script>
+</body>
+</html>

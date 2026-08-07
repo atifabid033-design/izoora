@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel · izoora</title>
+<meta name="description" content="Manage products, view registered clients, and fulfill orders.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="headerWrapper"></div>
+
+<main id="mainContent">
+  <!-- If not logged in as Admin -->
+  <div id="adminAuthGateError" class="wrap" style="display:none; padding:70px 0;">
+    <div class="empty-state">
+      <h3>Please log in to continue</h3>
+      <button class="btn btn-primary" style="margin-top:14px;" onclick="go('#/login')">Log in</button>
+    </div>
+  </div>
+
+  <!-- Admin layout -->
+  <div id="adminShell" class="admin-shell" style="display:none;">
+    <!-- Sidebar -->
+    <div class="admin-sidebar" id="adminSidebar"></div>
+    
+    <!-- Main Content Area -->
+    <div class="admin-main" id="adminMain">
+      <!-- Sub-view: Dashboard -->
+      <div id="adminDashboardView" class="admin-subview" style="display:none;">
+        <div class="admin-top">
+          <div><h2 style="margin-bottom:2px;">Dashboard</h2><p style="color:var(--cream-dim);font-size:13.5px;">Overview of your store's performance.</p></div>
+        </div>
+        <div class="kpi-grid" id="kpiGrid"></div>
+        <div class="two-col" style="align-items:flex-start;">
+          <div class="panel">
+            <h3 style="margin-bottom:16px;">Revenue, last 7 days</h3>
+            <div style="display:flex;align-items:flex-end;gap:12px;height:140px;" id="revenueChart"></div>
+          </div>
+          <div class="panel" id="highlightsPanel"></div>
+        </div>
+        <div class="panel">
+          <h3 style="margin-bottom:14px;">Recent orders</h3>
+          <div id="recentOrdersContainer"></div>
+        </div>
+      </div>
+
+      <!-- Sub-view: Clients -->
+      <div id="adminClientsView" class="admin-subview" style="display:none;">
+        <div class="admin-top">
+          <h2>Registered clients</h2>
+          <div id="clientsSearchWrapper"></div>
+        </div>
+        <div class="panel" id="clientsListContainer"></div>
+      </div>
+
+      <!-- Sub-view: Pending Orders -->
+      <div id="adminPendingView" class="admin-subview" style="display:none;">
+        <div class="admin-top">
+          <h2>Pending orders</h2>
+          <div id="pendingSearchWrapper"></div>
+        </div>
+        <div class="panel" id="pendingListContainer"></div>
+      </div>
+
+      <!-- Sub-view: Completed Orders -->
+      <div id="adminCompletedView" class="admin-subview" style="display:none;">
+        <div class="admin-top">
+          <h2>Completed orders</h2>
+          <div id="completedSearchWrapper"></div>
+        </div>
+        <div class="panel" id="completedListContainer"></div>
+      </div>
+
+      <!-- Sub-view: Products -->
+      <div id="adminProductsView" class="admin-subview" style="display:none;">
+        <div class="admin-top">
+          <h2>Products</h2>
+          <div style="display:flex;gap:10px;" id="productsHeaderAction"></div>
+        </div>
+        <div class="panel" id="adminProductsListContainer"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Modal -->
+  <div id="adminProductModal" class="modal-overlay" style="display:none;" onclick="if(event.target===this)closeProductModal()">
+    <div class="modal-box">
+      <span class="modal-close" onclick="closeProductModal()">✕</span>
+      <h3 id="pmTitle">Edit product</h3>
+      <div id="pmErr" class="notice error" style="display:none;"></div>
+      <div class="field"><label>Name</label><input id="pm_name" value=""></div>
+      <div class="two-col">
+        <div class="field"><label>Category</label>
+          <select id="pm_cat">
+            <option value="candle">candle</option>
+            <option value="jewelry">jewelry</option>
+            <option value="decor">decor</option>
+            <option value="skincare">skincare</option>
+            <option value="accessory">accessory</option>
+          </select>
+        </div>
+        <div class="field"><label>Price (USD)</label><input id="pm_price" type="number" min="0" step="0.01" value=""></div>
+      </div>
+      <div class="field"><label>Stock quantity</label><input id="pm_stock" type="number" min="0" value=""></div>
+      <div class="field"><label>Description</label><textarea id="pm_desc" rows="3"></textarea></div>
+      <div class="field"><label><input type="checkbox" id="pm_active" style="width:auto;margin-right:8px;">Visible on site (live)</label></div>
+      <button class="btn btn-primary btn-block" id="btnSaveProduct">Save changes</button>
+    </div>
+  </div>
+</main>
+
+<div class="toast-stack" id="toastStack"></div>
+<script src="script.js"></script>
+</body>
+</html>
